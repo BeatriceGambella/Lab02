@@ -1,7 +1,23 @@
+from os import WCONTINUED
+
+
 def carica_da_file(file_path):
     """Carica le foto dal file, creando un nuovo anno ogni volta che compare per la prima volta"""
-    # TODO
+    album = []
 
+    try:
+        infile = open(file_path, "r")
+        infile.readline()
+
+        for line in infile:
+            line = line.rstrip
+
+            if line == "":
+                continue
+
+
+            album.append(line)
+    return album
 
 def aggiungi_foto(album, codice, titolo, autore, mese, anno, file_path):
     """Aggiunge una foto all'album, creando l'anno al volo se non è ancora presente"""
@@ -36,6 +52,7 @@ def main():
             while True:
                 file_path = input("Inserisci il path del file da caricare: ").strip()
                 album = carica_da_file(file_path)
+                print(album)
                 if album is not None:
                     break
 
